@@ -4,10 +4,45 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/styles/common.css" rel="stylesheet" />
+    <link href="/src/styles/style.css" rel="stylesheet" />
     <title>Waffle SSO</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <div id="app">
+      <div class="buttons">
+        <!-- <button class="sign-in-button">카카오톡으로 로그인</button> -->
+        <!-- <button class="sign-in-button">페이스북으로 로그인</button> -->
+        <button class="sign-in-button">
+          <svg
+            class="logo"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M20 14.1079H14.1185V20H20V14.1079Z" fill="#ED8573" />
+            <path
+              d="M11.763 14.1079H5.88149V20H11.763V14.1079Z"
+              fill="#F0975E"
+            />
+            <path d="M20 5.89209H14.1185V11.7842H20V5.89209Z" fill="#F0975E" />
+            <path
+              d="M11.763 5.89209H5.88149V11.7842H11.763V5.89209Z"
+              fill="#F0975E"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M5.88151 0H3.53082V3.57312H0V5.8921H3.53082V11.7842H0V14.1032H3.53082V19.9953H5.88151V14.1079H11.763V20H14.1137V14.1079H19.9952V11.7889H14.1137V5.8921H19.9952V3.57312H14.1137V0H11.763V3.57312H5.88151V0ZM11.763 11.7842V5.8921H5.88151V11.7842H11.763Z"
+              fill="#27181D"
+            />
+          </svg>
+
+          <span> 와플계정으로 로그인 </span>
+        </button>
+      </div>
+    </div>
   </body>
 </html>

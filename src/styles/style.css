@@ -1,0 +1,53 @@
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  height: 100%;
+}
+
+#app > div.buttons {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#app > div.buttons button.sign-in-button {
+  width: 250px;
+  height: 40px;
+  margin: 12px;
+  padding: 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #f9f9f9;
+  border: 1px solid #791930;
+  border-radius: 2px;
+
+  font-size: 16px;
+}
+
+#app > div.buttons button.sign-in-button svg.logo {
+  width: 20px;
+  height: 20px;
+
+  padding: 4px 10px;
+
+  border-right: 1px solid #bdbdbd;
+}
+
+#app > div.buttons button.sign-in-button span {
+  padding: 0 12px;
+}
