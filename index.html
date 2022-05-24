@@ -4,16 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/src/styles/common.css" rel="stylesheet" />
-    <link href="/src/styles/style.css" rel="stylesheet" />
+    <link href="/src/styles/index.css" rel="stylesheet" />
     <title>Waffle SSO</title>
   </head>
   <body>
     <div id="app">
       <div class="buttons">
-        <!-- <button class="sign-in-button">카카오톡으로 로그인</button> -->
-        <!-- <button class="sign-in-button">페이스북으로 로그인</button> -->
-        <button class="sign-in-button">
+        <!-- <button class="sign-in-button">카카오톡으로 로그인</button>
+        <button class="sign-in-button">페이스북으로 로그인</button> -->
+        <button class="sign-in-button" id="waffle">
           <svg
             class="logo"
             width="20"
@@ -42,7 +41,9 @@
 
           <span> 와플계정으로 로그인 </span>
         </button>
+        <a href="/register/index.html" id="signup">회원가입 하기</a>
       </div>
     </div>
+    <script src="/src/ts/index.ts" type="module"></script>
   </body>
 </html>
