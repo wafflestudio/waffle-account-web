@@ -1,8 +1,12 @@
 import { SignupRequest } from "../types/Auth";
 
+const baseUri = import.meta.env.VITE_API_URL;
+
+console.log(baseUri);
+
 const AuthApi = {
   signup: (signupRequest: SignupRequest) => {
-    return fetch("http://localhost:8080/v1/users", {
+    return fetch(`${baseUri}/v1/users`, {
       method: "POST",
       mode: "cors",
       headers: {
