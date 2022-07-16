@@ -10,7 +10,7 @@
   <body>
     <div id="app">
       <section class="register">
-        <form class="register-form" method="post" id="signup-form">
+        <form class="register-form" method="put" id="signin-form">
           <div>
             <label for="email">이메일</label>
             <input type="text" id="email" placeholder="이메일" />
@@ -19,19 +19,10 @@
             <label for="password">비밀번호</label>
             <input type="password" id="password" placeholder="비밀번호" />
           </div>
-          <div>
-            <label for="checkPassword">비밀번호 확인</label>
-
-            <input
-              type="password"
-              id="checkPassword"
-              placeholder="비밀번호 확인"
-            />
-          </div>
-          <button id="submit" class="waffle" type="submit">회원가입</button>
+          <button id="submit" class="waffle" type="submit">로그인</button>
         </form>
       </section>
     </div>
-    <script src="/src/ts/register.ts" type="module"></script>
+    <script src="/src/ts/signin.ts" type="module"></script>
   </body>
 </html>

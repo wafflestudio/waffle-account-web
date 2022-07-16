@@ -1,5 +1,4 @@
 import { AuthApi } from "../apis";
-import { SignupResponse } from "../types/Auth";
 
 const signupForm = document.getElementById("signup-form");
 const emailInput = document.getElementById("email") as HTMLInputElement;
@@ -20,10 +19,9 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
     email: emailInput.value,
     password: passwordInput.value,
   })
-    .then((res) => res.json())
-    .then((res: SignupResponse) => {
-      localStorage.setItem("accessToken", res.access_token);
-      localStorage.setItem("refreshToken", res.refresh_token);
+    .then(() => {
+      window.alert("회원가입이 완료되었습니다.");
+      window.location.href = "/index.html";
     })
-    .catch(() => alert("회원 가입에 실패하였습니다."));
+    .catch(() => alert("회원가입에 실패하였습니다."));
 });

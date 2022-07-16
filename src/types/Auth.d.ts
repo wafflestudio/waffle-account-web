@@ -8,4 +8,14 @@ interface SignupResponse {
   refresh_token: string;
 }
 
-export { SignupRequest, SignupResponse };
+interface SigninRequest {
+  email: string;
+  password: string;
+}
+
+interface SigninResponse {
+  access_token: string;
+  refresh_token: string;
+}
+
+export { SignupRequest, SignupResponse, SigninRequest, SigninResponse };

@@ -60,13 +60,13 @@ body {
   text-decoration: underline;
 }
 
-#app > section.signup {
+#app > section.register {
   width: 100%;
   height: 100%;
   padding: relative;
 }
 
-#app > section.signup form#signup-form {
+#app > section.register form.register-form {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -80,7 +80,7 @@ body {
   width: 50%;
 }
 
-#app > section.signup form button#submit {
+#app > section.register form button#submit {
   height: 30px;
   font-weight: bold;
   font-size: 18px;

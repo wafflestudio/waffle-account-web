@@ -1,8 +1,6 @@
-import { SignupRequest } from "../types/Auth";
+import { SignupRequest, SigninRequest } from "../types/Auth";
 
 const baseUri = import.meta.env.VITE_API_URL;
-
-console.log(baseUri);
 
 const AuthApi = {
   signup: (signupRequest: SignupRequest) => {
@@ -13,6 +11,16 @@ const AuthApi = {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(signupRequest),
+    });
+  },
+  signin: (signinRequest: SigninRequest) => {
+    return fetch(`${baseUri}/v1/auth/signin`, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(signinRequest),
     });
   },
 };
