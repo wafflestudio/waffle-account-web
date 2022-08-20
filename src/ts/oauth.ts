@@ -13,7 +13,6 @@ window.onload = function () {
     .then((res: SigninResponse) => {
       localStorage.setItem("accessToken", res.access_token);
       localStorage.setItem("refreshToken", res.refresh_token);
-      window.location.href = "/index.html";
     })
-    .catch(() => alert("이메일과 비밀번호를 확인해 주세요."));
+    .catch();
 };
