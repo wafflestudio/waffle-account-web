@@ -5,13 +5,20 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/src/styles/index.css" rel="stylesheet" />
+    <script
+      src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.0/kakao.min.js"
+      integrity="sha384-PFHeU/4gvSH8kpvhrigAPfZGBDPs372JceJq3jAXce11bVA6rMvGWzvP4fMQuBGL"
+      crossorigin="anonymous"
+    ></script>
     <title>Waffle SSO</title>
   </head>
   <body>
     <div id="app">
       <div class="buttons">
-        <!-- <button class="sign-in-button">카카오톡으로 로그인</button>
-        <button class="sign-in-button">페이스북으로 로그인</button> -->
+        <button class="sign-in-button" id="kakao">
+          <img src="/images/kakao_login.png" width="250" height="40" />
+        </button>
+        <!-- <button class="sign-in-button">페이스북으로 로그인</button> -->
         <button class="sign-in-button" id="google">
           <svg
             xmlns="http://www.w3.org/2000/svg"

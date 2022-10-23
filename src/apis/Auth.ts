@@ -13,7 +13,7 @@ const AuthApi = {
       body: JSON.stringify(signupRequest),
     });
   },
-  oauthSignup: (provider: "google", accessToken: string) => {
+  oauthSignup: (provider: "google" | "kakao", accessToken: string) => {
     return fetch(`${baseUri}/v1/oauth/${provider}`, {
       method: "POST",
       mode: "cors",
@@ -21,6 +21,22 @@ const AuthApi = {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ access_token: accessToken }),
+    });
+  },
+  oauthSignupWithCode: (
+    provider: "google" | "kakao",
+    authorizationCode: string
+  ) => {
+    return fetch(`${baseUri}/v1/users/login/${provider}/code`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        authorization_code: authorizationCode,
+        redirect_uri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
+      }),
     });
   },
   signin: (signinRequest: SigninRequest) => {

@@ -1,9 +1,13 @@
 const waffleButton = document.getElementById("waffle");
 const googleButton = document.getElementById("google");
+const kakaoButton = document.getElementById("kakao");
 
 const REDIRECT_URI = {
   GOOGLE: import.meta.env.VITE_GOOGLE_REDIRECT_URI,
+  KAKAO: import.meta.env.VITE_KAKAO_REDIRECT_URI,
 };
+
+const KAKAO_APP_KEY = import.meta.env.VITE_KAKAO_APP_KEY;
 
 waffleButton?.addEventListener("click", () => {
   window.location.href = "/signin/index.html";
@@ -37,3 +41,11 @@ googleButton?.addEventListener("click", () => {
   document.body.appendChild(form);
   form.submit();
 });
+
+kakaoButton?.addEventListener("click", () => {
+  window.Kakao?.Auth?.authorize({
+    redirectUri: REDIRECT_URI.KAKAO,
+  });
+});
+
+window.Kakao.init(KAKAO_APP_KEY);
