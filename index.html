@@ -19,6 +19,10 @@
   <body>
     <div id="app">
       <div class="buttons">
+        <button class="sign-in-button" id="apple">
+          <img src="/images/apple_logo.png" width="28" height="28" />
+          <span>애플로 로그인</span>
+        </button>
         <button class="sign-in-button" id="github">
           <img src="/images/github_logo.png" width="28" height="28" />
           <span>깃허브로 로그인</span>
@@ -90,5 +94,24 @@
     </div>
     <div id="naverIdLogin"></div>
     <script src="/src/ts/index.ts" type="module"></script>
+    <script>
+      window.onload = function () {
+        document.addEventListener("AppleIDSignInOnSuccess", (event) => {
+          console.log(123123123);
+
+          console.log(event);
+
+          console.log(event?.detail?.data);
+        });
+
+        document.addEventListener("AppleIDSignInOnFailure", (event) => {
+          console.log("fafaf");
+
+          console.log(event);
+
+          console.log(event?.detail?.data);
+        });
+      };
+    </script>
   </body>
 </html>

@@ -87,6 +87,34 @@ window.onload = function () {
       });
 
     return;
+  } else if (window.location.href.includes("apple")) {
+    const params = new URLSearchParams(window.location.search);
+
+    const code = params.get("code");
+
+    if (!code) return;
+
+    AuthApi.oauthSignupWithCode("apple", code)
+      .then((res) => res.json())
+      .then((res: SigninResponse) => {
+        alert(res.access_token);
+        try {
+          window.Android.onSuccessSignIn(res.access_token);
+          return;
+        } catch {}
+
+        try {
+          window.webkit.messageHandlers.onSuccessSignIn.postMessage(
+            res.access_token
+          );
+          return;
+        } catch {}
+      })
+      .catch(() => {
+        alert("fail");
+      });
+
+    return;
   }
 
   const params = new URLSearchParams(window.location.search);

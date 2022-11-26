@@ -3,12 +3,14 @@ const googleButton = document.getElementById("google");
 const kakaoButton = document.getElementById("kakao");
 const naverButton = document.getElementById("naver");
 const githubButton = document.getElementById("github");
+const appleButton = document.getElementById("apple");
 
 const CLIENT_ID = {
   GOOGLE:
     "760558146658-s29dkmip6ktv4msbnlodqq61rdlm8qtu.apps.googleusercontent.com",
   NAVER: "IEVe0K7IJVBuM5ccDeQm",
   GITHUB: "d12c8229d6de79e48516",
+  APPLE: "com.wafflestudio.sso.test",
 };
 
 const REDIRECT_URI = {
@@ -16,6 +18,7 @@ const REDIRECT_URI = {
   KAKAO: import.meta.env.VITE_KAKAO_REDIRECT_URI,
   NAVER: "https://sso.wafflestudio.com/oauth/callback/naver.html",
   GITHUB: "https://sso.wafflestudio.com/oauth/callback/github.html",
+  APPLE: "https://sso.wafflestudio.com/oauth/callback/apple.html",
 };
 
 const KAKAO_APP_KEY = import.meta.env.VITE_KAKAO_APP_KEY;
@@ -78,6 +81,20 @@ githubButton?.addEventListener("click", () => {
   });
 
   const origin = "https://github.com/login/oauth/authorize";
+  window.location.href = `${origin}?${params.toString()}`;
+});
+
+appleButton?.addEventListener("click", () => {
+  const params = new URLSearchParams({
+    client_id: CLIENT_ID.APPLE,
+    redirect_uri: REDIRECT_URI.APPLE,
+    response_type: "code",
+    response_mode: "query",
+    m: "11",
+    v: "1.5.4",
+  });
+
+  const origin = "https://appleid.apple.com/auth/authorize";
   window.location.href = `${origin}?${params.toString()}`;
 });
 

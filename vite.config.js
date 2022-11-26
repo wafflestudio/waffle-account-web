@@ -12,6 +12,7 @@ module.exports = defineConfig({
         'oauth/callback/google': resolve(__dirname, 'oauth/callback/google.html'),
         'oauth/callback/kakao': resolve(__dirname, 'oauth/callback/kakao.html'),
         'oauth/callback/github': resolve(__dirname, 'oauth/callback/github.html'),
+        'oauth/callback/apple': resolve(__dirname, 'oauth/callback/apple.html'),
         'oauth/callback/naver': resolve(__dirname, 'oauth/callback/naver.html')
       }
     }

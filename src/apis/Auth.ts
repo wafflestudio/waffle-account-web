@@ -7,6 +7,7 @@ const REDIRECT_URI = {
   kakao: import.meta.env.VITE_KAKAO_REDIRECT_URI,
   naver: "https://sso.wafflestudio.com/oauth/callback/naver.html",
   github: "https://sso.wafflestudio.com/oauth/callback/github.html",
+  apple: "https://sso.wafflestudio.com/oauth/callback/apple.html",
 };
 
 const AuthApi = {
@@ -31,7 +32,7 @@ const AuthApi = {
     });
   },
   oauthSignupWithCode: (
-    provider: "google" | "kakao" | "naver" | "github",
+    provider: "google" | "kakao" | "naver" | "github" | "apple",
     authorizationCode: string,
     state?: string | null
   ) => {
