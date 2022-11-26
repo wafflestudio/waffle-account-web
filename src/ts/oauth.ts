@@ -16,18 +16,14 @@ window.onload = function () {
         try {
           window.Android.onSuccessSignIn(res.access_token);
           return;
-        } catch {
-          alert("Andfail");
-        }
+        } catch {}
 
         try {
           window.webkit.messageHandlers.onSuccessSignIn.postMessage(
             res.access_token
           );
           return;
-        } catch {
-          alert("IosFail");
-        }
+        } catch {}
       })
       .catch(() => {
         alert("fail");
@@ -49,18 +45,14 @@ window.onload = function () {
         try {
           window.Android.onSuccessSignIn(res.access_token);
           return;
-        } catch {
-          alert("Andfail");
-        }
+        } catch {}
 
         try {
           window.webkit.messageHandlers.onSuccessSignIn.postMessage(
             res.access_token
           );
           return;
-        } catch {
-          alert("IosFail");
-        }
+        } catch {}
       })
       .catch(() => {
         alert("fail");
@@ -81,18 +73,14 @@ window.onload = function () {
         try {
           window.Android.onSuccessSignIn(res.access_token);
           return;
-        } catch {
-          alert("Andfail");
-        }
+        } catch {}
 
         try {
           window.webkit.messageHandlers.onSuccessSignIn.postMessage(
             res.access_token
           );
           return;
-        } catch {
-          alert("IosFail");
-        }
+        } catch {}
       })
       .catch(() => {
         alert("fail");
@@ -115,18 +103,14 @@ window.onload = function () {
       try {
         window.Android.onSuccessSignIn(res.access_token);
         return;
-      } catch {
-        alert("Andfail");
-      }
+      } catch {}
 
       try {
         window.webkit.messageHandlers.onSuccessSignIn.postMessage(
           res.access_token
         );
         return;
-      } catch {
-        alert("IosFail");
-      }
+      } catch {}
     })
     .catch();
 };
