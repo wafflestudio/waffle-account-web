@@ -2,6 +2,13 @@ import { SignupRequest, SigninRequest } from "../types/Auth";
 
 const baseUri = import.meta.env.VITE_API_URL;
 
+const REDIRECT_URI = {
+  google: import.meta.env.VITE_GOOGLE_REDIRECT_URI,
+  kakao: import.meta.env.VITE_KAKAO_REDIRECT_URI,
+  naver: "https://sso.wafflestudio.com/oauth/callback/naver.html",
+  github: "https://sso.wafflestudio.com/oauth/callback/github.html",
+};
+
 const AuthApi = {
   signup: (signupRequest: SignupRequest) => {
     return fetch(`${baseUri}/v1/users`, {
@@ -24,8 +31,9 @@ const AuthApi = {
     });
   },
   oauthSignupWithCode: (
-    provider: "google" | "kakao",
-    authorizationCode: string
+    provider: "google" | "kakao" | "naver" | "github",
+    authorizationCode: string,
+    state?: string | null
   ) => {
     return fetch(`${baseUri}/v1/users/login/${provider}/code`, {
       method: "POST",
@@ -35,7 +43,8 @@ const AuthApi = {
       },
       body: JSON.stringify({
         authorization_code: authorizationCode,
-        redirect_uri: import.meta.env.VITE_KAKAO_REDIRECT_URI,
+        state,
+        redirect_uri: REDIRECT_URI[provider],
       }),
     });
   },

@@ -12,26 +12,121 @@ window.onload = function () {
     AuthApi.oauthSignupWithCode("kakao", code)
       .then((res) => res.json())
       .then((res: SigninResponse) => {
-        console.log(res);
+        alert(res.access_token);
+        try {
+          window.Android.onSuccessSignIn(res.access_token);
+          return;
+        } catch {
+          alert("Andfail");
+        }
 
-        window.onSuccessSignIn(res.access_token);
+        try {
+          window.webkit.messageHandlers.onSuccessSignIn.postMessage(
+            res.access_token
+          );
+          return;
+        } catch {
+          alert("IosFail");
+        }
       })
-      .catch();
+      .catch(() => {
+        alert("fail");
+      });
+
+    return;
+  } else if (window.location.href.includes("naver")) {
+    const params = new URLSearchParams(window.location.search);
+
+    const code = params.get("code");
+    const state = params.get("state");
+
+    if (!code) return;
+
+    AuthApi.oauthSignupWithCode("naver", code, state)
+      .then((res) => res.json())
+      .then((res: SigninResponse) => {
+        alert(res.access_token);
+        try {
+          window.Android.onSuccessSignIn(res.access_token);
+          return;
+        } catch {
+          alert("Andfail");
+        }
+
+        try {
+          window.webkit.messageHandlers.onSuccessSignIn.postMessage(
+            res.access_token
+          );
+          return;
+        } catch {
+          alert("IosFail");
+        }
+      })
+      .catch(() => {
+        alert("fail");
+      });
+
+    return;
+  } else if (window.location.href.includes("github")) {
+    const params = new URLSearchParams(window.location.search);
+
+    const code = params.get("code");
+
+    if (!code) return;
+
+    AuthApi.oauthSignupWithCode("github", code)
+      .then((res) => res.json())
+      .then((res: SigninResponse) => {
+        alert(res.access_token);
+        try {
+          window.Android.onSuccessSignIn(res.access_token);
+          return;
+        } catch {
+          alert("Andfail");
+        }
+
+        try {
+          window.webkit.messageHandlers.onSuccessSignIn.postMessage(
+            res.access_token
+          );
+          return;
+        } catch {
+          alert("IosFail");
+        }
+      })
+      .catch(() => {
+        alert("fail");
+      });
 
     return;
   }
 
-  const params = new URLSearchParams(window.location.hash.replace("#", "?"));
+  const params = new URLSearchParams(window.location.search);
 
-  const accessToken = params.get("access_token");
+  const code = params.get("code");
 
-  if (!accessToken) return;
+  if (!code) return;
 
-  AuthApi.oauthSignup("google", accessToken)
+  AuthApi.oauthSignupWithCode("google", code)
     .then((res) => res.json())
     .then((res: SigninResponse) => {
       localStorage.setItem("accessToken", res.access_token);
       localStorage.setItem("refreshToken", res.refresh_token);
+      try {
+        window.Android.onSuccessSignIn(res.access_token);
+        return;
+      } catch {
+        alert("Andfail");
+      }
+
+      try {
+        window.webkit.messageHandlers.onSuccessSignIn.postMessage(
+          res.access_token
+        );
+        return;
+      } catch {
+        alert("IosFail");
+      }
     })
     .catch();
 };
