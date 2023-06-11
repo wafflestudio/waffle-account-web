@@ -23,7 +23,7 @@
           <div class="title">
             <span>로그인</span>
           </div>
-          <form>
+          <form id="siginin-form">
             <div class="email-input">
               <input
                 name="email"
@@ -31,6 +31,7 @@
                 data-valid="false"
                 placeholder="이메일 (example@gmail.com)"
                 type="email"
+                id="email"
                 value=""
               />
             </div>
@@ -42,11 +43,12 @@
                 data-valid="false"
                 placeholder="비밀번호"
                 type="password"
+                id="password"
                 value=""
               />
             </div>
             <div class="login-button-box">
-              <button disabled="" type="submit" class="login-button">
+              <button type="button" id="login-button" class="login-button">
                 로그인
               </button>
             </div>
@@ -107,6 +109,8 @@
     </div>
     <div id="naverIdLogin"></div>
     <script src="/src/ts/index.ts" type="module"></script>
+    <script src="/src/ts/signin.ts" type="module"></script>
+
     <script>
       window.onload = function () {
         const redirectUri = new URLSearchParams(location.search).get(
