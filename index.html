@@ -107,5 +107,14 @@
     </div>
     <div id="naverIdLogin"></div>
     <script src="/src/ts/index.ts" type="module"></script>
+    <script>
+      window.onload = function () {
+        const redirectUri = new URLSearchParams(location.search).get(
+          "redirect_uri"
+        );
+
+        localStorage.setItem("redirectUri", redirectUri);
+      };
+    </script>
   </body>
 </html>
