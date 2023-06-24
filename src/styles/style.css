@@ -166,6 +166,16 @@ body {
   font-size: 16px;
 }
 
+button.sign-in-button#apple > img.logo-hover {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+button.sign-in-button#apple > img.logo-hover:hover {
+  opacity: 1;
+}
+
 #app a#signup {
   display: inline-block;
   width: 250px;
