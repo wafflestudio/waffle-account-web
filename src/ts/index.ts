@@ -7,9 +7,9 @@ const appleButton = document.getElementById("apple");
 
 const CLIENT_ID = {
   GOOGLE: String(import.meta.env.VITE_GOOGLE_CLIENT_ID),
-  NAVER: "IEVe0K7IJVBuM5ccDeQm",
-  GITHUB: "d12c8229d6de79e48516",
-  APPLE: "com.wafflestudio.sso.test",
+  NAVER: String(import.meta.env.VITE_NAVER_CLIENT_ID),
+  GITHUB: String(import.meta.env.VITE_GITHUB_CLIENT_ID),
+  APPLE: String(import.meta.env.VITE_APPLE_CLIENT_ID),
 };
 
 const REDIRECT_URI = {
