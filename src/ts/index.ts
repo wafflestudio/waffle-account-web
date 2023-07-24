@@ -6,8 +6,7 @@ const githubButton = document.getElementById("github");
 const appleButton = document.getElementById("apple");
 
 const CLIENT_ID = {
-  GOOGLE:
-    "760558146658-s29dkmip6ktv4msbnlodqq61rdlm8qtu.apps.googleusercontent.com",
+  GOOGLE: String(import.meta.env.VITE_GOOGLE_CLIENT_ID),
   NAVER: "IEVe0K7IJVBuM5ccDeQm",
   GITHUB: "d12c8229d6de79e48516",
   APPLE: "com.wafflestudio.sso.test",
@@ -16,9 +15,9 @@ const CLIENT_ID = {
 const REDIRECT_URI = {
   GOOGLE: import.meta.env.VITE_GOOGLE_REDIRECT_URI,
   KAKAO: import.meta.env.VITE_KAKAO_REDIRECT_URI,
-  NAVER: "https://sso.wafflestudio.com/oauth/callback/naver.html",
-  GITHUB: "https://sso.wafflestudio.com/oauth/callback/github.html",
-  APPLE: "https://sso.wafflestudio.com/oauth/callback/apple.html",
+  NAVER: String(import.meta.env.VITE_NAVER_REDIRECT_URI),
+  GITHUB: String(import.meta.env.VITE_GITHUB_REDIRECT_URI),
+  APPLE: String(import.meta.env.VITE_APPLE_REDIRECT_URI),
 };
 
 const KAKAO_APP_KEY = import.meta.env.VITE_KAKAO_APP_KEY;

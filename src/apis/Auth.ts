@@ -5,9 +5,9 @@ const baseUri = import.meta.env.VITE_API_URL;
 const REDIRECT_URI = {
   google: import.meta.env.VITE_GOOGLE_REDIRECT_URI,
   kakao: import.meta.env.VITE_KAKAO_REDIRECT_URI,
-  naver: "https://sso.wafflestudio.com/oauth/callback/naver.html",
-  github: "https://sso.wafflestudio.com/oauth/callback/github.html",
-  apple: "https://sso.wafflestudio.com/oauth/callback/apple.html",
+  naver: import.meta.env.VITE_NAVER_REDIRECT_URI,
+  github: import.meta.env.VITE_GITHUB_REDIRECT_URI,
+  apple: import.meta.env.VITE_APPLE_REDIRECT_URI,
 };
 
 const AuthApi = {
