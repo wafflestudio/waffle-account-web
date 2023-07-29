@@ -73,19 +73,7 @@ window.onload = function () {
 
     AuthApi.oauthSignupWithCode("apple", code)
       .then((res) => res.json())
-      .then((res: SigninResponse) => {
-        try {
-          window.Android.onSuccessSignIn(res.access_token);
-          return;
-        } catch {}
-
-        try {
-          window.webkit.messageHandlers.onSuccessSignIn.postMessage(
-            res.access_token
-          );
-          return;
-        } catch {}
-      });
+      .then(onSuccess);
 
     return;
   }
