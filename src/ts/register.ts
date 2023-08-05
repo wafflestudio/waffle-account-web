@@ -12,7 +12,7 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
   e.stopPropagation();
 
   if (passwordInput.value.length < 6) {
-    alert("6글자 이상의 비밀번호를 사용해주세요.");
+    alert("6자 이상의 비밀번호를 사용해주세요.");
     return;
   }
 
