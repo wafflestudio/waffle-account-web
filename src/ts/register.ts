@@ -11,6 +11,11 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
   e.stopPropagation();
 
+  if (passwordInput.value.length < 6) {
+    alert("6글자 이상의 비밀번호를 사용해주세요.");
+    return;
+  }
+
   if (passwordInput.value !== checkPasswordInput.value) {
     alert("비밀번호가 일치하지 않습니다.");
     return;
