@@ -41,11 +41,13 @@ const onClickLoginButton = async (e: any) => {
   }
 
   try {
+    console.log("44444444444444444444444");
     const res = await AuthApi.signin({
       email: emailInput.value,
       password: passwordInput.value,
     });
 
+    console.log("123123123");
     const responseJson = await res.json();
 
     await onSuccess(responseJson);
