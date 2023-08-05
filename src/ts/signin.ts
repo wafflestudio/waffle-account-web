@@ -46,7 +46,12 @@ loginButton?.addEventListener("click", (e) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.status != 200) throw Error();
+      if (res.status != 200) {
+        emailInput.value = "";
+        passwordInput.value = "";
+
+        throw Error();
+      }
 
       return res;
     })
