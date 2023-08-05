@@ -24,7 +24,9 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
     .then((res) => {
       console.log(res);
 
-      if (res.status != 200) {
+      if (res.status == 409) {
+        throw Error("이미 존재하는 이메일입니다.");
+      } else if (res.status != 200) {
         throw Error();
       }
 
@@ -34,5 +36,9 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
       window.alert("회원가입이 완료되었습니다.");
       window.location.href = "/index.html";
     })
-    .catch(() => alert("회원가입에 실패하였습니다."));
+    .catch((e) => {
+      console.log(e);
+
+      alert("회원가입에 실패하였습니다.");
+    });
 });
