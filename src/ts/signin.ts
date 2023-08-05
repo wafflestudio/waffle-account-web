@@ -25,13 +25,13 @@ const onSuccess = (res: SigninResponse) => {
   const redirectUri = localStorage.getItem("redirectUri");
 
   if (redirectUri) {
-    window.location.href = redirectUri;
-
     localStorage.removeItem("redriectUri");
+
+    window.location.href = redirectUri;
   }
 };
 
-loginButton?.addEventListener("click", (e) => {
+const onClickLoginButton = async (e: any) => {
   e.preventDefault();
   e.stopPropagation();
 
@@ -40,11 +40,18 @@ loginButton?.addEventListener("click", (e) => {
     return;
   }
 
-  AuthApi.signin({
-    email: emailInput.value,
-    password: passwordInput.value,
-  })
-    .then((res) => res.json())
-    .then(onSuccess)
-    .catch(() => alert("이메일과 비밀번호를 확인해 주세요."));
-});
+  try {
+    const res = await AuthApi.signin({
+      email: emailInput.value,
+      password: passwordInput.value,
+    });
+
+    const responseJson = await res.json();
+
+    await onSuccess(responseJson);
+  } catch {
+    alert("이메일과 비밀번호를 확인해 주세요.");
+  }
+};
+
+loginButton?.addEventListener("click", onClickLoginButton);
