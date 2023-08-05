@@ -12,7 +12,7 @@ const REDIRECT_URI = {
 
 const AuthApi = {
   signup: (signupRequest: SignupRequest) => {
-    return fetch(`${baseUri}/v1/users`, {
+    return fetch(`${baseUri}/v1/users/signup/email`, {
       method: "POST",
       mode: "cors",
       headers: {
