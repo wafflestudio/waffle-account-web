@@ -50,7 +50,7 @@ const AuthApi = {
     });
   },
   signin: (signinRequest: SigninRequest) => {
-    return fetch(`${baseUri}/v1/auth/signin`, {
+    return fetch(`${baseUri}/v1/users/login/email`, {
       method: "PUT",
       mode: "cors",
       headers: {
