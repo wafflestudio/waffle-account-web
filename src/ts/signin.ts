@@ -44,7 +44,6 @@ loginButton?.addEventListener("click", (e) => {
     email: emailInput.value,
     password: passwordInput.value,
   })
-    .then((res) => res.json())
     .then((res) => {
       if (res.status != 200) {
         emailInput.value = "";
@@ -53,7 +52,7 @@ loginButton?.addEventListener("click", (e) => {
         throw Error();
       }
 
-      return res;
+      return res.json();
     })
     .then(onSuccess)
     .catch(() => alert("이메일과 비밀번호를 확인해 주세요."));

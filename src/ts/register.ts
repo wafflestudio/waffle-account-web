@@ -21,32 +21,17 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
     password: passwordInput.value,
   })
     .then((res) => {
-      console.log(res);
-
-      if (res.status == 409) {
-        throw Error("이미 존재하는 이메일입니다.");
-      } else if (res.status != 200) {
+      if (res.status != 200) {
         throw Error();
       }
 
       return res.json();
     })
-    // .then((res) => {
-    //   if (res.status == 409) {
-    //     throw Error("이미 존재하는 이메일입니다.");
-    //   } else if (res.status != 200) {
-    //     throw Error();
-    //   }
-
-    //   return res;
-    // })
     .then(() => {
       window.alert("회원가입이 완료되었습니다.");
       window.location.href = "/index.html";
     })
     .catch((e) => {
-      console.log(e.message);
-
-      alert("회원가입에 실패하였습니다.");
+      alert(e.message || "회원가입에 실패하였습니다.");
     });
 });

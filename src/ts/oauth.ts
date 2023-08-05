@@ -36,13 +36,12 @@ window.onload = function () {
     if (!code) return;
 
     AuthApi.oauthSignupWithCode("kakao", code)
-      .then((res) => res.json())
       .then((res) => {
         if (res.status != 200) {
           throw Error();
         }
 
-        return res;
+        return res.json();
       })
       .then(onSuccess);
     return;
@@ -55,13 +54,12 @@ window.onload = function () {
     if (!code) return;
 
     AuthApi.oauthSignupWithCode("naver", code, state)
-      .then((res) => res.json())
       .then((res) => {
         if (res.status != 200) {
           throw Error();
         }
 
-        return res;
+        return res.json();
       })
       .then(onSuccess);
 
@@ -74,13 +72,12 @@ window.onload = function () {
     if (!code) return;
 
     AuthApi.oauthSignupWithCode("github", code)
-      .then((res) => res.json())
       .then((res) => {
         if (res.status != 200) {
           throw Error();
         }
 
-        return res;
+        return res.json();
       })
       .then(onSuccess);
 
@@ -93,13 +90,12 @@ window.onload = function () {
     if (!code) return;
 
     AuthApi.oauthSignupWithCode("apple", code)
-      .then((res) => res.json())
       .then((res) => {
         if (res.status != 200) {
           throw Error();
         }
 
-        return res;
+        return res.json();
       })
       .then(onSuccess);
 
