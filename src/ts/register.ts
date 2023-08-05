@@ -9,6 +9,7 @@ const checkPasswordInput = document.getElementById(
 
 signupForm?.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
+  e.stopPropagation();
 
   if (passwordInput.value !== checkPasswordInput.value) {
     alert("비밀번호가 일치하지 않습니다.");
@@ -21,6 +22,8 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
   })
     .then((res) => res.json())
     .then((res) => {
+      console.log(res);
+
       if (res.status != 200) {
         throw Error();
       }
