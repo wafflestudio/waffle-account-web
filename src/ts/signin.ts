@@ -49,6 +49,9 @@ const onClickLoginButton = async (e: any) => {
 
     console.log("123123123");
     const responseJson = await res.json();
+    console.log(responseJson);
+
+    console.log("why");
 
     await onSuccess(responseJson);
   } catch {
