@@ -37,6 +37,13 @@ window.onload = function () {
 
     AuthApi.oauthSignupWithCode("kakao", code)
       .then((res) => res.json())
+      .then((res) => {
+        if (res.status != 200) {
+          throw Error();
+        }
+
+        return res;
+      })
       .then(onSuccess);
     return;
   } else if (window.location.href.includes("naver")) {
@@ -49,6 +56,13 @@ window.onload = function () {
 
     AuthApi.oauthSignupWithCode("naver", code, state)
       .then((res) => res.json())
+      .then((res) => {
+        if (res.status != 200) {
+          throw Error();
+        }
+
+        return res;
+      })
       .then(onSuccess);
 
     return;
@@ -61,6 +75,13 @@ window.onload = function () {
 
     AuthApi.oauthSignupWithCode("github", code)
       .then((res) => res.json())
+      .then((res) => {
+        if (res.status != 200) {
+          throw Error();
+        }
+
+        return res;
+      })
       .then(onSuccess);
 
     return;
@@ -73,6 +94,13 @@ window.onload = function () {
 
     AuthApi.oauthSignupWithCode("apple", code)
       .then((res) => res.json())
+      .then((res) => {
+        if (res.status != 200) {
+          throw Error();
+        }
+
+        return res;
+      })
       .then(onSuccess);
 
     return;
@@ -86,5 +114,12 @@ window.onload = function () {
 
   AuthApi.oauthSignupWithCode("google", code)
     .then((res) => res.json())
+    .then((res) => {
+      if (res.status != 200) {
+        throw Error();
+      }
+
+      return res;
+    })
     .then(onSuccess);
 };

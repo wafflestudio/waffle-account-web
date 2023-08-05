@@ -19,6 +19,14 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
     email: emailInput.value,
     password: passwordInput.value,
   })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.status != 200) {
+        throw Error();
+      }
+
+      return res;
+    })
     .then(() => {
       window.alert("회원가입이 완료되었습니다.");
       window.location.href = "/index.html";
