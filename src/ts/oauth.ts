@@ -38,7 +38,12 @@ const parseJson = (res: any) => {
 const onError = (e: any) => {
   console.log(e.cause);
 
-  alert("이미 사용중인 이메일입니다. 다른 로그인 방식을 사용해주세요.");
+  const message =
+    e.cause === 409
+      ? "이미 사용중인 이메일입니다. 다른 로그인 방식을 사용해주세요."
+      : "로그인에 실패했습니다. 다시 시도해주세요.";
+
+  alert(message);
   window.location.href = "/index.html";
 };
 
