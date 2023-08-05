@@ -29,7 +29,7 @@ const onSuccess = (res: SigninResponse) => {
 
 const parseJson = (res: any) => {
   if (res.status != 200) {
-    throw Error(undefined, { cause: { status: res.status } });
+    throw Error(undefined, { cause: res.status });
   }
 
   return res.json();
@@ -64,13 +64,7 @@ window.onload = function () {
     if (!code) return;
 
     AuthApi.oauthSignupWithCode("naver", code, state)
-      .then((res) => {
-        if (res.status != 200) {
-          throw Error(undefined, { cause: { status: res.status } });
-        }
-
-        return res.json();
-      })
+      .then(parseJson)
       .then(onSuccess)
       .catch(onError);
 
@@ -109,14 +103,7 @@ window.onload = function () {
   if (!code) return;
 
   AuthApi.oauthSignupWithCode("google", code)
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.status != 200) {
-        throw Error();
-      }
-
-      return res;
-    })
+    .then(parseJson)
     .then(onSuccess)
     .catch(onError);
 };
