@@ -22,6 +22,10 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
   })
     .then((res) => {
       if (res.status != 200) {
+        if (res.status == 409) {
+          throw Error("이미 사용중인 이메일입니다.");
+        }
+
         throw Error();
       }
 
