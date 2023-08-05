@@ -25,13 +25,13 @@ const onSuccess = (res: SigninResponse) => {
   const redirectUri = localStorage.getItem("redirectUri");
 
   if (redirectUri) {
-    localStorage.removeItem("redriectUri");
-
     window.location.href = redirectUri;
+
+    localStorage.removeItem("redriectUri");
   }
 };
 
-const onClickLoginButton = async (e: any) => {
+loginButton?.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
 
@@ -40,23 +40,16 @@ const onClickLoginButton = async (e: any) => {
     return;
   }
 
-  try {
-    console.log("44444444444444444444444");
-    const res = await AuthApi.signin({
-      email: emailInput.value,
-      password: passwordInput.value,
-    });
+  AuthApi.signin({
+    email: emailInput.value,
+    password: passwordInput.value,
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.status != 200) throw Error();
 
-    console.log("123123123");
-    const responseJson = await res.json();
-    console.log(responseJson);
-
-    console.log("why");
-
-    await onSuccess(responseJson);
-  } catch {
-    alert("이메일과 비밀번호를 확인해 주세요.");
-  }
-};
-
-loginButton?.addEventListener("click", onClickLoginButton);
+      return res;
+    })
+    .then(onSuccess)
+    .catch(() => alert("이메일과 비밀번호를 확인해 주세요."));
+});
