@@ -27,6 +27,21 @@ const onSuccess = (res: SigninResponse) => {
   }
 };
 
+const parseJson = (res: any) => {
+  if (res.status != 200) {
+    throw Error(undefined, { cause: { status: res.status } });
+  }
+
+  return res.json();
+};
+
+const onError = (e: any) => {
+  console.log(e.cause);
+
+  alert("이미 사용중인 이메일입니다. 다른 로그인 방식을 사용해주세요.");
+  window.location.href = "/index.html";
+};
+
 window.onload = function () {
   if (window.location.href.includes("kakao")) {
     const params = new URLSearchParams(window.location.search);
@@ -36,14 +51,9 @@ window.onload = function () {
     if (!code) return;
 
     AuthApi.oauthSignupWithCode("kakao", code)
-      .then((res) => {
-        if (res.status != 200) {
-          throw Error();
-        }
-
-        return res.json();
-      })
-      .then(onSuccess);
+      .then(parseJson)
+      .then(onSuccess)
+      .catch(onError);
     return;
   } else if (window.location.href.includes("naver")) {
     const params = new URLSearchParams(window.location.search);
@@ -56,12 +66,13 @@ window.onload = function () {
     AuthApi.oauthSignupWithCode("naver", code, state)
       .then((res) => {
         if (res.status != 200) {
-          throw Error();
+          throw Error(undefined, { cause: { status: res.status } });
         }
 
         return res.json();
       })
-      .then(onSuccess);
+      .then(onSuccess)
+      .catch(onError);
 
     return;
   } else if (window.location.href.includes("github")) {
@@ -72,15 +83,9 @@ window.onload = function () {
     if (!code) return;
 
     AuthApi.oauthSignupWithCode("github", code)
-      .then((res) => {
-        if (res.status != 200) {
-          throw Error();
-        }
-
-        return res.json();
-      })
-      .then(onSuccess);
-
+      .then(parseJson)
+      .then(onSuccess)
+      .catch(onError);
     return;
   } else if (window.location.href.includes("apple")) {
     const params = new URLSearchParams(window.location.search);
@@ -90,14 +95,9 @@ window.onload = function () {
     if (!code) return;
 
     AuthApi.oauthSignupWithCode("apple", code)
-      .then((res) => {
-        if (res.status != 200) {
-          throw Error();
-        }
-
-        return res.json();
-      })
-      .then(onSuccess);
+      .then(parseJson)
+      .then(onSuccess)
+      .catch(onError);
 
     return;
   }
@@ -117,5 +117,6 @@ window.onload = function () {
 
       return res;
     })
-    .then(onSuccess);
+    .then(onSuccess)
+    .catch(onError);
 };

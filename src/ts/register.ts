@@ -32,7 +32,7 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
       return res.json();
     })
     .then(() => {
-      window.alert("회원가입이 완료되었습니다.");
+      alert("회원가입이 완료되었습니다.");
       window.location.href = "/index.html";
     })
     .catch((e) => {
