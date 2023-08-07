@@ -9,6 +9,12 @@ const checkPasswordInput = document.getElementById(
 
 signupForm?.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
+  e.stopPropagation();
+
+  if (passwordInput.value.length < 6) {
+    alert("6자 이상의 비밀번호를 사용해주세요.");
+    return;
+  }
 
   if (passwordInput.value !== checkPasswordInput.value) {
     alert("비밀번호가 일치하지 않습니다.");
@@ -19,9 +25,22 @@ signupForm?.addEventListener("submit", (e: SubmitEvent) => {
     email: emailInput.value,
     password: passwordInput.value,
   })
+    .then((res) => {
+      if (res.status != 200) {
+        if (res.status == 409) {
+          throw Error("이미 사용중인 이메일입니다.");
+        }
+
+        throw Error();
+      }
+
+      return res.json();
+    })
     .then(() => {
-      window.alert("회원가입이 완료되었습니다.");
+      alert("회원가입이 완료되었습니다.");
       window.location.href = "/index.html";
     })
-    .catch(() => alert("회원가입에 실패하였습니다."));
+    .catch((e) => {
+      alert(e.message || "회원가입에 실패하였습니다.");
+    });
 });

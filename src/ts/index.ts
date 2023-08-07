@@ -20,8 +20,6 @@ const REDIRECT_URI = {
   APPLE: String(import.meta.env.VITE_APPLE_REDIRECT_URI),
 };
 
-console.log(CLIENT_ID);
-
 const KAKAO_APP_KEY = import.meta.env.VITE_KAKAO_APP_KEY;
 
 waffleButton?.addEventListener("click", () => {
